@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção Marinha</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, serif;
+    background:#f2f2f2;
+    color:#002a8d;
+}
+
+/* NAVBAR */
+header{
+    background:#002fa7;
+    padding:15px 40px;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo img{
+    width:120px;
+    height:auto;
+}
+
+.menu{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:#7fd9ff;
+}
+
+/* CONTEÚDO */
+.container{
+    width:95%;
+    margin:auto;
+    padding:40px 0;
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+/* CARTAZ */
+.poster img{
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* TEXTO CENTRAL */
+.main-text h1{
+    font-size:60px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.main-text p{
+    font-size:26px;
+    line-height:1.6;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* LATERAL */
+.side-box{
+    text-align:center;
+}
+
+.side-box h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.side-box p{
+    font-size:24px;
+    line-height:1.5;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+.btn{
+    display:inline-block;
+    padding:22px 55px;
+    background:#0b78ff;
+    color:white;
+    font-size:34px;
+    text-decoration:none;
+    border-radius:25px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#005be0;
+    transform:scale(1.05);
+}
+
+/* RESPONSIVO */
+@media(max-width:1200px){
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .main-text h1{
+        font-size:45px;
+    }
+
+    .main-text p,
+    .side-box p{
+        font-size:22px;
+    }
+}
+
+@media(max-width:700px){
+    .menu{
+        flex-direction:column;
+        gap:10px;
+        margin-top:15px;
+    }
+
+    .main-text h1{
+        font-size:34px;
+    }
+
+    .btn{
+        font-size:28px;
+        padding:18px 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+
+        <!-- LOGO PARA ADICIONAR DEPOIS -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo Proteção Marinha">
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Doação</a></li>
+            <li><a href="#">Campanhas</a></li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<section class="container">
+
+    <!-- CARTAZ -->
+    <div class="poster">
+        <img src="cartaz.jpg" alt="Cartaz Proteção Marinha">
+    </div>
+
+    <!-- TEXTO CENTRAL -->
+    <div class="main-text">
+        <h1>BEM-VINDO</h1>
+
+        <p>
+            O site Proteção Marinha foi criado para unir pessoas em defesa
+            dos oceanos, mares e toda a vida existente neles. Nosso objetivo
+            é conscientizar a população sobre a importância da preservação
+            marinha, incentivar atitudes sustentáveis e apoiar projetos que
+            combatam a poluição e a destruição ambiental.
+            <br><br>
+            Aqui você poderá acompanhar campanhas ecológicas, notícias,
+            projetos de recuperação ambiental e iniciativas que ajudam a
+            proteger espécies ameaçadas. Também oferecemos um espaço para
+            denúncias de crimes ambientais e ações que coloquem em risco
+            nossos recursos naturais.
+            <br><br>
+            Acreditamos que pequenas atitudes geram grandes mudanças.
+            Juntos podemos transformar o futuro dos oceanos e garantir
+            equilíbrio para as próximas gerações.
+        </p>
+    </div>
+
+    <!-- LATERAL -->
+    <div class="side-box">
+        <h2>NOSSA MISSÃO</h2>
+
+        <p>
+            Preservar os oceanos e proteger a vida marinha por meio da
+            conscientização, denúncias ambientais e apoio a projetos
+            sustentáveis.
+            <br><br>
+            Trabalhamos para construir um futuro onde mares limpos e
+            espécies protegidas façam parte da realidade de todos.
+        </p>
+
+        <a href="#" class="btn">DOE AQUI</a>
+    </div>
+
+</section>
+
+</body>
+</html>
