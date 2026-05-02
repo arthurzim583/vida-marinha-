@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção Marinha - Doação</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    color:#002b8f;
+}
+
+/* NAVBAR */
+header{
+    background:#002fa7;
+    padding:15px 40px;
+}
+
+.navbar{
+    display:grid;
+    grid-template-columns:160px 1fr auto;
+    align-items:center;
+    gap:20px;
+}
+
+.logo img{
+    width:120px;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    color:#7ad8ff;
+}
+
+/* BOTÕES LOGIN */
+.auth-buttons{
+    display:flex;
+    gap:12px;
+    justify-content:flex-end;
+}
+
+.auth-buttons a{
+    text-decoration:none;
+    color:#fff;
+    background:#1380ff;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.auth-buttons a:hover{
+    background:#49a6ff;
+}
+
+/* ÁREA PRINCIPAL */
+.main{
+    width:100%;
+    min-height:calc(100vh - 110px);
+    padding:30px 20px 60px;
+}
+
+.titulo{
+    text-align:center;
+    font-size:72px;
+    margin-bottom:25px;
+}
+
+/* GRID */
+.content{
+    display:grid;
+    grid-template-columns:1fr 540px 1fr;
+    gap:30px;
+    align-items:center;
+}
+
+.animals{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+    align-items:center;
+}
+
+.animals img{
+    width:100%;
+    max-width:320px;
+}
+
+/* FORM */
+.form-box{
+    background:#0023a8;
+    padding:35px;
+    border-radius:8px;
+}
+
+.form-box form{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.form-box input,
+.form-box select{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:20px 28px;
+    border-radius:50px;
+    font-size:22px;
+    background:#1380ff;
+    color:#fff;
+}
+
+.form-box input::placeholder{
+    color:#e8f4ff;
+}
+
+.payment-title{
+    color:#fff;
+    font-size:22px;
+    text-align:center;
+}
+
+/* OPÇÕES */
+.pay-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.pay-options button{
+    background:#1380ff;
+    color:#fff;
+    padding:14px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.pay-options button:hover{
+    background:#0d6be0;
+}
+
+/* CAIXAS */
+.payment-box{
+    display:none;
+    background:#1380ff;
+    color:#fff;
+    padding:18px;
+    border-radius:20px;
+    font-size:18px;
+    line-height:1.5;
+}
+
+.qr{
+    width:140px;
+    height:140px;
+    background:
+    repeating-linear-gradient(
+    0deg,#000 0,#000 10px,#fff 10px,#fff 20px),
+    repeating-linear-gradient(
+    90deg,#000 0,#000 10px,#fff 10px,#fff 20px);
+    margin:15px auto;
+    border:8px solid #fff;
+}
+
+.submit{
+    width:60%;
+    margin:0 auto;
+    border:none;
+    padding:18px;
+    border-radius:50px;
+    font-size:34px;
+    font-weight:bold;
+    color:#fff;
+    background:#1380ff;
+    cursor:pointer;
+}
+
+.submit:hover{
+    background:#0b68d3;
+}
+
+@media(max-width:1200px){
+.content{
+grid-template-columns:1fr;
+}
+
+.animals{
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
+}
+}
+
+@media(max-width:700px){
+.navbar{
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.logo{
+text-align:center;
+}
+
+.menu{
+flex-wrap:wrap;
+gap:16px;
+}
+
+.auth-buttons{
+justify-content:center;
+}
+
+.titulo{
+font-size:48px;
+}
+
+.pay-options{
+grid-template-columns:1fr;
+}
+
+.submit{
+width:100%;
+font-size:28px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="logo">
+<img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo">
+</div>
+
+<ul class="menu">
+<li><a href="#">Início</a></li>
+<li><a href="#">Doação</a></li>
+<li><a href="#">Campanhas</a></li>
+<li><a href="#">Denúncia</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+
+<div class="auth-buttons">
+<a href="#">Login</a>
+<a href="#">Cadastro</a>
+</div>
+
+</nav>
+</header>
+
+<section class="main">
+
+<h1 class="titulo">DOAÇÃO</h1>
+
+<div class="content">
+
+<!-- ESQUERDA -->
+<div class="animals">
+<img src="https://i.ibb.co/mFqxn8Rq/background-removed-Tiger-shark-standard.png">
+<img src="https://i.ibb.co/HTD9M742/background-removed-turtle-863336-1280-jpg-standard.png">
+<img src="https://i.ibb.co/MkwGKdZZ/majestic-orca-swimming-gracefully-in-ocean-depths-for-marine-awareness-png.webp">
+</div>
+
+<!-- FORM -->
+<div class="form-box">
+<form>
+
+<input type="email" placeholder="E-mail">
+<input type="password" placeholder="Senha">
+<input type="text" placeholder="CPF">
+
+<div class="payment-title">Digite o valor da doação</div>
+<input type="number" placeholder="R$ 0,00" min="1">
+
+<div class="payment-title">Forma de pagamento</div>
+
+<div class="pay-options">
+<button type="button" onclick="mostrarPagamento('pix')">PIX</button>
+<button type="button" onclick="mostrarPagamento('cartao')">Cartão</button>
+</div>
+
+<div id="pix" class="payment-box">
+QR Code PIX:
+<div class="qr"></div>
+Código PIX: 00020126360014BR.GOV.BCB.PIX123456789
+</div>
+
+<div id="cartao" class="payment-box">
+<select>
+<option>Crédito</option>
+<option>Débito</option>
+</select>
+<input type="text" placeholder="Número do cartão">
+<input type="text" placeholder="Nome no cartão">
+<input type="text" placeholder="Validade">
+</div>
+
+<button class="submit">Doar Agora</button>
+
+</form>
+</div>
+
+<!-- DIREITA -->
+<div class="animals">
+<img src="https://i.ibb.co/0jGtyHG9/background-removed-360-F-1692663839-UNXku8-Frxik-Iq-Hsvz-DZFyt9tcdn-Pl-SGc-standard.png">
+<img src="https://i.ibb.co/vvxGtW3Q/background-removed-360-F-1960749196-b9ap-Alj8wmq-Tnd60-XVq-Mpj-OBTaf-Lx-Ro8-standard.png">
+<img src="https://i.ibb.co/zThz9dF0/background-removed-gray-dolphin-swimming-ocean-sleek-600nw-2720013973-standard.png">
+</div>
+
+</div>
+</section>
+
+<script>
+function mostrarPagamento(tipo){
+
+let caixas = document.querySelectorAll('.payment-box');
+
+caixas.forEach(function(caixa){
+    caixa.style.display = "none";
+});
+
+document.getElementById(tipo).style.display = "block";
+}
+</script>
+
+</body>
+</html>
