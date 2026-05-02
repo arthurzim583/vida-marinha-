@@ -14,21 +14,25 @@
 
 body{
     font-family: Georgia, serif;
-    background:#f2f2f2;
+    background:
+    linear-gradient(rgba(255, 255, 255, 0.28), rgba(0,0,0,0.28)),
+    url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
     color:#002a8d;
 }
 
-/* NAVBAR */
 header{
     background:#002fa7;
     padding:15px 40px;
 }
 
 .navbar{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:160px 1fr auto;
     align-items:center;
-    flex-wrap:wrap;
 }
 
 .logo img{
@@ -38,7 +42,9 @@ header{
 
 .menu{
     display:flex;
-    gap:30px;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
     list-style:none;
 }
 
@@ -54,45 +60,66 @@ header{
     color:#7fd9ff;
 }
 
-/* CONTEÚDO */
+/* NOVOS BOTÕES */
+.auth-buttons{
+    display:flex;
+    gap:12px;
+    justify-content:flex-end;
+}
+
+.auth-buttons a{
+    text-decoration:none;
+    color:#fff;
+    background:#0b78ff;
+    padding:10px 22px;
+    border-radius:25px;
+    font-size:22px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.auth-buttons a:hover{
+    background:#005de2;
+    transform:scale(1.05);
+}
+
 .container{
     width:95%;
     margin:auto;
     padding:40px 0;
     display:grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap:30px;
+    grid-template-columns:1fr 2fr 1fr;
+    gap:35px;
     align-items:start;
 }
 
-/* CARTAZ */
 .poster img{
     width:100%;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    border-radius:12px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.2);
 }
 
-/* TEXTO CENTRAL */
-.main-text h1{
-    font-size:60px;
+.main-text{
     text-align:center;
+}
+
+.main-text h1{
+    font-size:62px;
     margin-bottom:20px;
 }
 
 .main-text p{
-    font-size:26px;
-    line-height:1.6;
-    text-align:center;
+    font-size:27px;
+    line-height:1.55;
     font-weight:bold;
 }
 
-/* LATERAL */
 .side-box{
     text-align:center;
 }
 
 .side-box h2{
-    font-size:42px;
+    font-size:44px;
     margin-bottom:20px;
 }
 
@@ -100,56 +127,69 @@ header{
     font-size:24px;
     line-height:1.5;
     font-weight:bold;
-    margin-bottom:40px;
+    margin-bottom:35px;
 }
 
 .btn{
     display:inline-block;
-    padding:22px 55px;
     background:#0b78ff;
-    color:white;
-    font-size:34px;
+    color:#fff;
     text-decoration:none;
-    border-radius:25px;
+    font-size:34px;
     font-weight:bold;
+    padding:22px 55px;
+    border-radius:25px;
     transition:0.3s;
 }
 
 .btn:hover{
-    background:#005be0;
+    background:#005de2;
     transform:scale(1.05);
 }
 
-/* RESPONSIVO */
 @media(max-width:1200px){
     .container{
         grid-template-columns:1fr;
     }
+}
 
-    .main-text h1{
-        font-size:45px;
+@media(max-width:900px){
+    .navbar{
+        grid-template-columns:1fr;
+        gap:18px;
     }
 
-    .main-text p,
-    .side-box p{
-        font-size:22px;
+    .logo{
+        text-align:center;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        gap:18px;
+    }
+
+    .auth-buttons{
+        justify-content:center;
     }
 }
 
 @media(max-width:700px){
     .menu{
         flex-direction:column;
-        gap:10px;
-        margin-top:15px;
     }
 
     .main-text h1{
-        font-size:34px;
+        font-size:40px;
+    }
+
+    .main-text p,
+    .side-box p{
+        font-size:20px;
     }
 
     .btn{
         font-size:28px;
-        padding:18px 40px;
+        padding:18px 35px;
     }
 }
 </style>
@@ -160,53 +200,55 @@ header{
 <header>
     <nav class="navbar">
 
-        <!-- LOGO PARA ADICIONAR DEPOIS -->
         <div class="logo">
-            <img src="logo.png" alt="Logo Proteção Marinha">
+            <img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo Proteção Marinha">
         </div>
 
         <ul class="menu">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Doação</a></li>
-            <li><a href="#">Campanhas</a></li>
-            <li><a href="#">Denúncia</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="doacao.html">Doação</a></li>
+            <li><a href="campanhas.html">Campanhas</a></li>
+            <li><a href="denuncia.html">Denúncia</a></li>
+            <li><a href="contato.html">Contato</a></li>
         </ul>
+
+        <div class="auth-buttons">
+            <a href="login.html">Login</a>
+            <a href="cadastro.html">Cadastro</a>
+        </div>
 
     </nav>
 </header>
 
 <section class="container">
 
-    <!-- CARTAZ -->
     <div class="poster">
-        <img src="cartaz.jpg" alt="Cartaz Proteção Marinha">
+        <img src="https://i.ibb.co/qYkTtjkH/Chat-GPT-Image-27-de-abr-de-2026-19-18-26.png" alt="Cartaz de Proteção Marinha">
     </div>
 
-    <!-- TEXTO CENTRAL -->
     <div class="main-text">
         <h1>BEM-VINDO</h1>
 
         <p>
-            O site Proteção Marinha foi criado para unir pessoas em defesa
-            dos oceanos, mares e toda a vida existente neles. Nosso objetivo
-            é conscientizar a população sobre a importância da preservação
-            marinha, incentivar atitudes sustentáveis e apoiar projetos que
-            combatam a poluição e a destruição ambiental.
+            O site Proteção Marinha nasceu com o propósito de defender
+            nossos oceanos e toda a vida que depende deles.
+            Aqui você encontrará campanhas ambientais, projetos de
+            preservação, notícias importantes e ações voltadas para a
+            sustentabilidade marinha.
             <br><br>
-            Aqui você poderá acompanhar campanhas ecológicas, notícias,
-            projetos de recuperação ambiental e iniciativas que ajudam a
-            proteger espécies ameaçadas. Também oferecemos um espaço para
-            denúncias de crimes ambientais e ações que coloquem em risco
-            nossos recursos naturais.
+
+            Nossa plataforma conecta pessoas que desejam fazer a diferença,
+            incentivando atitudes conscientes e oferecendo meios para
+            colaborar com iniciativas reais.
+            Também disponibilizamos um espaço para denúncias ambientais,
+            fortalecendo a proteção da natureza.
             <br><br>
-            Acreditamos que pequenas atitudes geram grandes mudanças.
-            Juntos podemos transformar o futuro dos oceanos e garantir
-            equilíbrio para as próximas gerações.
+
+            Juntos podemos construir mares mais limpos, proteger espécies
+            ameaçadas e garantir um futuro melhor para as próximas gerações.
         </p>
     </div>
 
-    <!-- LATERAL -->
     <div class="side-box">
         <h2>NOSSA MISSÃO</h2>
 
@@ -215,11 +257,12 @@ header{
             conscientização, denúncias ambientais e apoio a projetos
             sustentáveis.
             <br><br>
-            Trabalhamos para construir um futuro onde mares limpos e
-            espécies protegidas façam parte da realidade de todos.
+
+            Trabalhamos para transformar informação em ação e esperança
+            em resultados concretos para o planeta.
         </p>
 
-        <a href="#" class="btn">DOE AQUI</a>
+        <a href="doacao.html" class="btn">DOE AQUI</a>
     </div>
 
 </section>
