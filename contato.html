@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proteção Marinha - Contato</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background: 
+                linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+                url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #002b8f;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #002fa7;
+            padding: 15px 40px;
+        }
+
+        .navbar {
+            display: grid;
+            grid-template-columns: 160px 1fr auto;
+            align-items: center;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            width: 120px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #7ad8ff;
+        }
+
+        /* BOTÕES DE AUTH */
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .auth-buttons a {
+            text-decoration: none;
+            color: #fff;
+            background: #1380ff;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .auth-buttons a:hover {
+            background: #49a6ff;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 40px 20px;
+        }
+
+        .form-box {
+            background: #0023a8;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-box h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 42px;
+        }
+
+        .form-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-box input,
+        .form-box textarea {
+            border: none;
+            outline: none;
+            padding: 18px 25px;
+            border-radius: 25px;
+            font-size: 18px;
+            background: #1380ff;
+            color: #fff;
+        }
+
+        .form-box textarea {
+            resize: none;
+            height: 140px;
+        }
+
+        .form-box input::placeholder,
+        .form-box textarea::placeholder {
+            color: #e8f4ff;
+        }
+
+        .submit {
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;
+            background: #1380ff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit:hover {
+            background: #0b68d3;
+        }
+
+        .info {
+            margin-top: 15px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .extra {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 700px) {
+            .navbar {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .auth-buttons {
+                justify-content: center;
+            }
+
+            .form-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo Proteção Marinha">
+            </div>
+
+            <ul class="menu">
+                <li><a href="inicio.html">Início</a></li>
+                <li><a href="doacao.html">Doação</a></li>
+                <li><a href="campanhas.html">Campanhas</a></li>
+                <li><a href="denuncia.html">Denúncia</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <a href="login.html">Login</a>
+                <a href="cadastro.html">Cadastro</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+        <div class="form-box">
+            <h1>Contato</h1>
+            
+            <form>
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <textarea placeholder="Digite sua mensagem..." required></textarea>
+                
+                <button type="submit" class="submit">Enviar Mensagem</button>
+            </form>
+
+            <div class="info">
+                Responderemos o mais rápido possível.
+            </div>
+
+            <div class="extra">
+                📧 Email: <strong>contato@protecaomarinha.com</strong><br>
+                📞 Telefone: <strong>(21) 99999-9999</strong>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
