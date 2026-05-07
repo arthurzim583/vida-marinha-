@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção Marinha - Cadastro</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+/* NAVBAR */
+header{
+    background:#002fa7;
+    padding:15px 40px;
+}
+
+.navbar{
+    display:grid;
+    grid-template-columns:160px 1fr auto;
+    align-items:center;
+    gap:20px;
+}
+
+.logo img{
+    width:120px;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    color:#7ad8ff;
+}
+
+/* BOTÕES */
+.auth-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.auth-buttons a{
+    text-decoration:none;
+    color:#fff;
+    background:#1380ff;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.auth-buttons a:hover{
+    background:#49a6ff;
+}
+
+/* CONTAINER */
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:85vh;
+    padding:40px 20px;
+}
+
+.form-box{
+    width:100%;
+    max-width:520px;
+    background:#0023a8;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+}
+
+.form-box h1{
+    color:#fff;
+    text-align:center;
+    font-size:48px;
+    margin-bottom:30px;
+}
+
+.form-box form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:18px 25px;
+    border-radius:40px;
+    font-size:20px;
+    background:#1380ff;
+    color:#fff;
+}
+
+.form-box input::placeholder{
+    color:#dff3ff;
+}
+
+.submit{
+    border:none;
+    padding:18px;
+    border-radius:40px;
+    background:#1380ff;
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit:hover{
+    background:#0d6be0;
+}
+
+.login-link{
+    text-align:center;
+    color:#fff;
+    font-size:18px;
+}
+
+.login-link a{
+    color:#7fd9ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+/* RESPONSIVO */
+@media(max-width:700px){
+
+.navbar{
+    grid-template-columns:1fr;
+    gap:18px;
+}
+
+.logo{
+    text-align:center;
+}
+
+.menu{
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.auth-buttons{
+    justify-content:center;
+}
+
+.form-box h1{
+    font-size:40px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="logo">
+<img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo">
+</div>
+
+<ul class="menu">
+<li><a href="inicio.html">Início</a></li>
+<li><a href="doacao.html">Doação</a></li>
+<li><a href="campanhas.html">Campanhas</a></li>
+<li><a href="denuncia.html">Denúncia</a></li>
+<li><a href="contato.html">Contato</a></li>
+</ul>
+
+<div class="auth-buttons">
+<a href="login.html">Login</a>
+<a href="cadastro.html">Cadastro</a>
+</div>
+
+</nav>
+</header>
+
+<section class="main">
+
+<div class="form-box">
+
+<h1>Cadastro</h1>
+
+<form onsubmit="fazerCadastro(event)">
+
+<input type="text" placeholder="Nome completo" required>
+
+<input type="email" placeholder="E-mail" required>
+
+<input type="password" placeholder="Senha" required>
+
+<input type="password" placeholder="Confirmar senha" required>
+
+<input type="text" placeholder="CPF" required>
+
+<button type="submit" class="submit">
+Cadastrar
+</button>
+
+<div class="login-link">
+Já possui conta?
+<a href="login.html">Entrar</a>
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<script>
+function fazerCadastro(event){
+
+event.preventDefault();
+
+alert("Cadastro realizado com sucesso!");
+
+window.location.href = "inicio.html";
+
+}
+</script>
+
+</body>
+</html>
