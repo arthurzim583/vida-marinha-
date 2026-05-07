@@ -1,0 +1,238 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção Marinha - Denúncias</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    color:#002b8f;
+}
+
+/* NAVBAR */
+header{
+    background:#002fa7;
+    padding:15px 40px;
+}
+
+.navbar{
+    display:grid;
+    grid-template-columns:160px 1fr auto;
+    align-items:center;
+    gap:20px;
+}
+
+.logo img{
+    width:120px;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    color:#7ad8ff;
+}
+
+/* BOTÕES LOGIN */
+.auth-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.auth-buttons a{
+    text-decoration:none;
+    color:#fff;
+    background:#1380ff;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.auth-buttons a:hover{
+    background:#49a6ff;
+}
+
+/* CONTEÚDO */
+.main{
+    padding:40px;
+}
+
+.titulo{
+    text-align:center;
+    font-size:60px;
+    margin-bottom:40px;
+    color:#fff;
+}
+
+.denuncias{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:30px;
+}
+
+.card{
+    background:#0023a8;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+    color:#fff;
+}
+
+.card-content h2{
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.card-content p{
+    font-size:18px;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.local{
+    font-size:17px;
+    margin-bottom:12px;
+    color:#bde6ff;
+}
+
+.btn{
+    display:inline-block;
+    background:#1380ff;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:25px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#0b68d3;
+}
+
+@media(max-width:700px){
+    .navbar{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .auth-buttons{
+        justify-content:center;
+    }
+
+    .titulo{
+        font-size:42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="logo">
+<img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo">
+</div>
+
+<ul class="menu">
+<li><a href="inicio.html">Início</a></li>
+<li><a href="doacao.html">Doação</a></li>
+<li><a href="campanhas.html">Campanhas</a></li>
+<li><a href="denuncia.html">Denúncia</a></li>
+<li><a href="contato.html">Contato</a></li>
+</ul>
+
+<div class="auth-buttons">
+<a href="login.html">Login</a>
+<a href="cadastro.html">Cadastro</a>
+</div>
+
+</nav>
+</header>
+
+<section class="main">
+
+<h1 class="titulo">DENÚNCIAS AMBIENTAIS</h1>
+
+<div style="max-width:700px; margin:0 auto 50px auto; background:#0023a8; padding:35px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+
+<form style="display:flex; flex-direction:column; gap:18px;">
+
+<input type="text" placeholder="Seu nome (opcional)" style="border:none; outline:none; padding:18px 25px; border-radius:25px; font-size:18px; background:#1380ff; color:#fff;">
+
+<input type="text" placeholder="Local da denúncia" style="border:none; outline:none; padding:18px 25px; border-radius:25px; font-size:18px; background:#1380ff; color:#fff;">
+
+<select style="border:none; outline:none; padding:18px 25px; border-radius:25px; font-size:18px; background:#1380ff; color:#fff;">
+<option>Tipo de denúncia</option>
+<option>Poluição no oceano</option>
+<option>Pesca ilegal</option>
+<option>Animal ferido</option>
+<option>Danos ambientais</option>
+</select>
+
+<textarea placeholder="Descreva a denúncia..." style="border:none; outline:none; padding:20px 25px; border-radius:25px; font-size:18px; background:#1380ff; color:#fff; resize:none; height:140px;"></textarea>
+
+<input type="file" style="color:#fff; font-size:16px;">
+
+<button type="submit" style="border:none; padding:18px; border-radius:50px; font-size:24px; font-weight:bold; color:#fff; background:#1380ff; cursor:pointer;">
+Enviar Denúncia
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+</body>
+</html>
+```
