@@ -1,220 +1,398 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proteção Marinha - Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção Marinha - Login</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: Georgia, serif;
-            background: 
-                linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
-                url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #002b8f;
-        }
+body{
+    font-family: Georgia, serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    url("https://i.ibb.co/SX5ycDcT/underwater-sun-rays-ocean-hawaii-5k-8k-3840x2160-8301.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color:#002b8f;
+}
 
-        /* NAVBAR */
-        header {
-            background: #002fa7;
-            padding: 15px 40px;
-        }
+/* NAVBAR */
+header{
+    background:#002fa7;
+    padding:15px 40px;
+}
 
-        .navbar {
-            display: grid;
-            grid-template-columns: 160px 1fr auto;
-            align-items: center;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.navbar{
+    display:grid;
+    grid-template-columns:160px 1fr auto;
+    align-items:center;
+    gap:20px;
+    max-width:1400px;
+    margin:0 auto;
+}
 
-        .logo img {
-            width: 120px;
-        }
+.logo img{
+    width:120px;
+}
 
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            list-style: none;
-        }
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    list-style:none;
+}
 
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 22px;
-            font-weight: bold;
-        }
+.menu a{
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+}
 
-        .menu a:hover {
-            color: #7ad8ff;
-        }
+.menu a:hover{
+    color:#7ad8ff;
+}
 
-        /* BOTÕES DE AUTH */
-        .auth-buttons {
-            display: flex;
-            gap: 12px;
-        }
+/* BOTÕES LOGIN */
+.auth-buttons{
+    display:flex;
+    gap:12px;
+}
 
-        .auth-buttons a {
-            text-decoration: none;
-            color: #fff;
-            background: #1380ff;
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-size: 20px;
-            font-weight: bold;
-        }
+.auth-buttons a{
+    text-decoration:none;
+    color:#fff;
+    background:#1380ff;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+}
 
-        .auth-buttons a:hover {
-            background: #49a6ff;
-        }
+.auth-buttons a:hover{
+    background:#49a6ff;
+}
 
-        /* CONTEÚDO PRINCIPAL */
-        .main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            padding: 20px;
-        }
+/* PERFIL */
+.profile-area{
+    display:none;
+    align-items:center;
+    gap:12px;
+}
 
-        .form-box {
-            background: #0023a8;
-            padding: 40px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
+.profile-img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+    cursor:pointer;
+}
 
-        .form-box h1 {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 25px;
-            font-size: 42px;
-        }
+.profile-upload{
+    display:none;
+}
 
-        .form-box form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+.logout-btn{
+    background:#1380ff;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
 
-        .form-box input {
-            border: none;
-            outline: none;
-            padding: 18px 25px;
-            border-radius: 50px;
-            font-size: 20px;
-            background: #1380ff;
-            color: #fff;
-        }
+.logout-btn:hover{
+    background:#49a6ff;
+}
 
-        .form-box input::placeholder {
-            color: #e8f4ff;
-        }
+/* MAIN */
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:80vh;
+    padding:20px;
+}
 
-        .submit {
-            border: none;
-            padding: 18px;
-            border-radius: 50px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #fff;
-            background: #1380ff;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.form-box{
+    background:#0023a8;
+    padding:40px;
+    border-radius:12px;
+    width:100%;
+    max-width:400px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
 
-        .submit:hover {
-            background: #0b68d3;
-        }
+.form-box h1{
+    text-align:center;
+    color:#fff;
+    margin-bottom:25px;
+    font-size:42px;
+}
 
-        .link {
-            text-align: center;
-            color: #fff;
-            font-size: 16px;
-        }
+.form-box form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
 
-        .link a {
-            color: #7fd9ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.form-box input{
+    border:none;
+    outline:none;
+    padding:18px 25px;
+    border-radius:50px;
+    font-size:20px;
+    background:#1380ff;
+    color:#fff;
+}
 
-        .link a:hover {
-            text-decoration: underline;
-        }
+.form-box input::placeholder{
+    color:#e8f4ff;
+}
 
-        /* RESPONSIVO */
-        @media (max-width: 700px) {
-            .navbar {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                text-align: center;
-            }
+.submit{
+    border:none;
+    padding:18px;
+    border-radius:50px;
+    font-size:28px;
+    font-weight:bold;
+    color:#fff;
+    background:#1380ff;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-            .menu {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
+.submit:hover{
+    background:#0b68d3;
+}
 
-            .auth-buttons {
-                justify-content: center;
-            }
-        }
-    </style>
+.link{
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+}
+
+.link a{
+    color:#7fd9ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.link a:hover{
+    text-decoration:underline;
+}
+
+/* RESPONSIVO */
+@media(max-width:700px){
+
+.navbar{
+    grid-template-columns:1fr;
+    gap:15px;
+    text-align:center;
+}
+
+.menu{
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.auth-buttons,
+.profile-area{
+    justify-content:center;
+}
+
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo Proteção Marinha">
-            </div>
+<header>
+<nav class="navbar">
 
-            <ul class="menu">
-                <li><a href="inicio.html">Início</a></li>
-                <li><a href="doacao.html">Doação</a></li>
-                <li><a href="campanha.html">Campanhas</a></li>
-                <li><a href="denuncias.html">Denúncia</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
+<div class="logo">
+<img src="https://i.ibb.co/kgXqv5zw/Design-sem-nome-1.png" alt="Logo Proteção Marinha">
+</div>
 
-            <div class="auth-buttons">
-                <a href="login.html">Login</a>
-                <a href="cadastro.html">Cadastro</a>
-            </div>
-        </nav>
-    </header>
+<ul class="menu">
+<li><a href="inicio.html">Início</a></li>
+<li><a href="doacao.html">Doação</a></li>
+<li><a href="campanha.html">Campanhas</a></li>
+<li><a href="denuncias.html">Denúncia</a></li>
+<li><a href="contato.html">Contato</a></li>
+</ul>
 
-    <section class="main">
-        <div class="form-box">
-            <h1>Login</h1>
-            
-            <form>
-                <input type="email" placeholder="E-mail" required>
-                <input type="password" placeholder="Senha" required>
-                <button type="submit" class="submit">Entrar</button>
-            </form>
+<!-- BOTÕES -->
+<div class="auth-buttons" id="authButtons">
+<a href="login.html">Login</a>
+<a href="cadastro.html">Cadastro</a>
+</div>
 
-            <div class="link">
-                Não tem conta? <a href="cadastro.html">Cadastre-se</a>
-            </div>
-        </div>
-    </section>
+<!-- PERFIL -->
+<div class="profile-area" id="profileArea">
+
+<label for="profileUpload">
+<img 
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+class="profile-img"
+id="profileImage">
+</label>
+
+<input 
+type="file" 
+id="profileUpload" 
+class="profile-upload"
+accept="image/*">
+
+<button class="logout-btn" onclick="logout()">
+Sair
+</button>
+
+</div>
+
+</nav>
+</header>
+
+<section class="main">
+
+<div class="form-box">
+
+<h1>Login</h1>
+
+<form id="loginForm">
+
+<input 
+type="email" 
+id="email"
+placeholder="E-mail" 
+required>
+
+<input 
+type="password" 
+id="senha"
+placeholder="Senha" 
+required>
+
+<button type="submit" class="submit">
+Entrar
+</button>
+
+</form>
+
+<div class="link">
+Não tem conta?
+<a href="cadastro.html">Cadastre-se</a>
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/* EMAIL E SENHA */
+const EMAIL_CORRETO = "admin@email.com";
+const SENHA_CORRETA = "123456";
+
+/* LOGIN */
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(event){
+
+event.preventDefault();
+
+let email = document.getElementById("email").value;
+let senha = document.getElementById("senha").value;
+
+if(email === EMAIL_CORRETO && senha === SENHA_CORRETA){
+
+localStorage.setItem("logado", "true");
+
+alert("Login realizado com sucesso!");
+
+window.location.href = "inicio.html";
+
+}else{
+
+alert("E-mail ou senha incorretos!");
+
+}
+
+});
+
+/* PERFIL */
+function verificarLogin(){
+
+let logado = localStorage.getItem("logado");
+
+if(logado === "true"){
+
+document.getElementById("authButtons").style.display = "none";
+
+document.getElementById("profileArea").style.display = "flex";
+
+let fotoSalva = localStorage.getItem("fotoPerfil");
+
+if(fotoSalva){
+
+document.getElementById("profileImage").src = fotoSalva;
+
+}
+
+}
+
+}
+
+verificarLogin();
+
+/* TROCAR FOTO */
+document
+.getElementById("profileUpload")
+.addEventListener("change", function(){
+
+let arquivo = this.files[0];
+
+if(arquivo){
+
+let leitor = new FileReader();
+
+leitor.onload = function(e){
+
+let imagem = e.target.result;
+
+document.getElementById("profileImage").src = imagem;
+
+localStorage.setItem("fotoPerfil", imagem);
+
+}
+
+leitor.readAsDataURL(arquivo);
+
+}
+
+});
+
+/* LOGOUT */
+function logout(){
+
+localStorage.removeItem("logado");
+
+window.location.reload();
+
+}
+
+</script>
 
 </body>
 </html>

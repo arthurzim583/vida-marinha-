@@ -78,6 +78,41 @@ header{
     background:#49a6ff;
 }
 
+/* PERFIL */
+.profile-area{
+    display:none;
+    align-items:center;
+    gap:12px;
+}
+
+.profile-img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+    cursor:pointer;
+}
+
+.profile-upload{
+    display:none;
+}
+
+.logout-btn{
+    background:#1380ff;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#49a6ff;
+}
+
 /* CONTAINER */
 .main{
     display:flex;
@@ -173,7 +208,8 @@ header{
     gap:16px;
 }
 
-.auth-buttons{
+.auth-buttons,
+.profile-area{
     justify-content:center;
 }
 
@@ -202,9 +238,32 @@ header{
 <li><a href="contato.html">Contato</a></li>
 </ul>
 
-<div class="auth-buttons">
+<!-- BOTÕES -->
+<div class="auth-buttons" id="authButtons">
 <a href="login.html">Login</a>
 <a href="cadastro.html">Cadastro</a>
+</div>
+
+<!-- PERFIL -->
+<div class="profile-area" id="profileArea">
+
+<label for="profileUpload">
+<img 
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+class="profile-img"
+id="profileImage">
+</label>
+
+<input 
+type="file"
+id="profileUpload"
+class="profile-upload"
+accept="image/*">
+
+<button class="logout-btn" onclick="logout()">
+Sair
+</button>
+
 </div>
 
 </nav>
@@ -216,17 +275,35 @@ header{
 
 <h1>Cadastro</h1>
 
-<form onsubmit="fazerCadastro(event)">
+<form id="cadastroForm">
 
-<input type="text" placeholder="Nome completo" required>
+<input 
+type="text"
+placeholder="Nome completo"
+required>
 
-<input type="email" placeholder="E-mail" required>
+<input 
+type="email"
+id="cadastroEmail"
+placeholder="E-mail"
+required>
 
-<input type="password" placeholder="Senha" required>
+<input 
+type="password"
+id="cadastroSenha"
+placeholder="Senha"
+required>
 
-<input type="password" placeholder="Confirmar senha" required>
+<input 
+type="password"
+id="confirmarSenha"
+placeholder="Confirmar senha"
+required>
 
-<input type="text" placeholder="CPF" required>
+<input 
+type="text"
+placeholder="CPF"
+required>
 
 <button type="submit" class="submit">
 Cadastrar
@@ -244,15 +321,102 @@ Já possui conta?
 </section>
 
 <script>
-function fazerCadastro(event){
+
+/* PERFIL */
+function verificarLogin(){
+
+let logado = localStorage.getItem("logado");
+
+if(logado === "true"){
+
+document.getElementById("authButtons").style.display = "none";
+
+document.getElementById("profileArea").style.display = "flex";
+
+let fotoSalva = localStorage.getItem("fotoPerfil");
+
+if(fotoSalva){
+
+document.getElementById("profileImage").src = fotoSalva;
+
+}
+
+}
+
+}
+
+verificarLogin();
+
+/* TROCAR FOTO */
+document
+.getElementById("profileUpload")
+.addEventListener("change", function(){
+
+let arquivo = this.files[0];
+
+if(arquivo){
+
+let leitor = new FileReader();
+
+leitor.onload = function(e){
+
+let imagem = e.target.result;
+
+document.getElementById("profileImage").src = imagem;
+
+localStorage.setItem("fotoPerfil", imagem);
+
+}
+
+leitor.readAsDataURL(arquivo);
+
+}
+
+});
+
+/* CADASTRO */
+document
+.getElementById("cadastroForm")
+.addEventListener("submit", function(event){
 
 event.preventDefault();
+
+let email = document.getElementById("cadastroEmail").value;
+
+let senha = document.getElementById("cadastroSenha").value;
+
+let confirmar = document.getElementById("confirmarSenha").value;
+
+if(senha !== confirmar){
+
+alert("As senhas não coincidem!");
+
+return;
+
+}
+
+/* SALVAR */
+localStorage.setItem("emailUsuario", email);
+
+localStorage.setItem("senhaUsuario", senha);
+
+localStorage.setItem("logado", "true");
 
 alert("Cadastro realizado com sucesso!");
 
 window.location.href = "inicio.html";
 
+});
+
+/* LOGOUT */
+function logout(){
+
+localStorage.removeItem("logado");
+
+window.location.reload();
+
 }
+
 </script>
 
 </body>

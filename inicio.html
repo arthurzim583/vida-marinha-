@@ -60,10 +60,12 @@ header{
     color:#7fd9ff;
 }
 
+/* BOTÕES LOGIN */
 .auth-buttons{
     display:flex;
     gap:12px;
     justify-content:flex-end;
+    align-items:center;
 }
 
 .auth-buttons a{
@@ -80,6 +82,32 @@ header{
 .auth-buttons a:hover{
     background:#005de2;
     transform:scale(1.05);
+}
+
+/* PERFIL */
+.profile-area{
+    display:none;
+    align-items:center;
+    gap:12px;
+}
+
+.profile-pic{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid white;
+    cursor:pointer;
+}
+
+.profile-name{
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#fileInput{
+    display:none;
 }
 
 .container{
@@ -167,7 +195,8 @@ header{
         gap:18px;
     }
 
-    .auth-buttons{
+    .auth-buttons,
+    .profile-area{
         justify-content:center;
     }
 }
@@ -211,9 +240,28 @@ header{
             <li><a href="contato.html">Contato</a></li>
         </ul>
 
-        <div class="auth-buttons">
+        <!-- BOTÕES LOGIN -->
+        <div class="auth-buttons" id="authButtons">
             <a href="login.html">Login</a>
             <a href="cadastro.html">Cadastro</a>
+        </div>
+
+        <!-- PERFIL -->
+        <div class="profile-area" id="profileArea">
+
+            <label for="fileInput">
+                <img 
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                class="profile-pic"
+                id="profilePic">
+            </label>
+
+            <input type="file" id="fileInput" accept="image/*">
+
+            <div class="profile-name" id="profileName">
+                Usuário
+            </div>
+
         </div>
 
     </nav>
@@ -265,6 +313,53 @@ header{
     </div>
 
 </section>
+
+<script>
+
+/* VERIFICA LOGIN */
+const usuarioLogado = localStorage.getItem("usuarioLogado");
+const nomeUsuario = localStorage.getItem("nomeUsuario");
+const fotoPerfil = localStorage.getItem("fotoPerfil");
+
+if(usuarioLogado === "true"){
+
+    document.getElementById("authButtons").style.display = "none";
+
+    document.getElementById("profileArea").style.display = "flex";
+
+    if(nomeUsuario){
+        document.getElementById("profileName").innerText = nomeUsuario;
+    }
+
+    if(fotoPerfil){
+        document.getElementById("profilePic").src = fotoPerfil;
+    }
+}
+
+/* TROCAR FOTO */
+document.getElementById("fileInput").addEventListener("change", function(event){
+
+    const arquivo = event.target.files[0];
+
+    if(arquivo){
+
+        const leitor = new FileReader();
+
+        leitor.onload = function(e){
+
+            const imagem = e.target.result;
+
+            document.getElementById("profilePic").src = imagem;
+
+            localStorage.setItem("fotoPerfil", imagem);
+        };
+
+        leitor.readAsDataURL(arquivo);
+    }
+
+});
+
+</script>
 
 </body>
 </html>
