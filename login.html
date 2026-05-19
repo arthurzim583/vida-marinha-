@@ -228,7 +228,7 @@ header{
 <ul class="menu">
 <li><a href="inicio.html">Início</a></li>
 <li><a href="doacao.html">Doação</a></li>
-<li><a href="campanha.html">Campanhas</a></li>
+<li><a href="campanhas.html">Campanhas</a></li>
 <li><a href="denuncias.html">Denúncia</a></li>
 <li><a href="contato.html">Contato</a></li>
 </ul>
@@ -306,92 +306,59 @@ const EMAIL_CORRETO = "admin@email.com";
 const SENHA_CORRETA = "123456";
 
 /* LOGIN */
-document
-.getElementById("loginForm")
-.addEventListener("submit", function(event){
+document.getElementById("loginForm").addEventListener("submit", function(event){
+    event.preventDefault();
 
-event.preventDefault();
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
 
-let email = document.getElementById("email").value;
-let senha = document.getElementById("senha").value;
+    if(email === EMAIL_CORRETO && senha === SENHA_CORRETA){
+        localStorage.setItem("logado", "true");
+        localStorage.setItem("nomeUsuario", "Usuário"); // Você pode mudar depois
 
-if(email === EMAIL_CORRETO && senha === SENHA_CORRETA){
-
-localStorage.setItem("logado", "true");
-
-alert("Login realizado com sucesso!");
-
-window.location.href = "inicio.html";
-
-}else{
-
-alert("E-mail ou senha incorretos!");
-
-}
-
+        alert("Login realizado com sucesso!");
+        window.location.href = "inicio.html";
+    } else {
+        alert("E-mail ou senha incorretos!");
+    }
 });
 
-/* PERFIL */
+/* VERIFICA LOGIN */
 function verificarLogin(){
+    let logado = localStorage.getItem("logado");
 
-let logado = localStorage.getItem("logado");
+    if(logado === "true"){
+        document.getElementById("authButtons").style.display = "none";
+        document.getElementById("profileArea").style.display = "flex";
 
-if(logado === "true"){
-
-document.getElementById("authButtons").style.display = "none";
-
-document.getElementById("profileArea").style.display = "flex";
-
-let fotoSalva = localStorage.getItem("fotoPerfil");
-
-if(fotoSalva){
-
-document.getElementById("profileImage").src = fotoSalva;
-
-}
-
-}
-
+        let fotoSalva = localStorage.getItem("fotoPerfil");
+        if(fotoSalva){
+            document.getElementById("profileImage").src = fotoSalva;
+        }
+    }
 }
 
 verificarLogin();
 
 /* TROCAR FOTO */
-document
-.getElementById("profileUpload")
-.addEventListener("change", function(){
-
-let arquivo = this.files[0];
-
-if(arquivo){
-
-let leitor = new FileReader();
-
-leitor.onload = function(e){
-
-let imagem = e.target.result;
-
-document.getElementById("profileImage").src = imagem;
-
-localStorage.setItem("fotoPerfil", imagem);
-
-}
-
-leitor.readAsDataURL(arquivo);
-
-}
-
+document.getElementById("profileUpload").addEventListener("change", function(){
+    let arquivo = this.files[0];
+    if(arquivo){
+        let leitor = new FileReader();
+        leitor.onload = function(e){
+            let imagem = e.target.result;
+            document.getElementById("profileImage").src = imagem;
+            localStorage.setItem("fotoPerfil", imagem);
+        };
+        leitor.readAsDataURL(arquivo);
+    }
 });
 
 /* LOGOUT */
 function logout(){
-
-localStorage.removeItem("logado");
-
-window.location.reload();
-
+    localStorage.removeItem("logado");
+    window.location.reload();
 }
-
 </script>
 
 </body>

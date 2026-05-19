@@ -234,7 +234,7 @@ header{
 <li><a href="inicio.html">Início</a></li>
 <li><a href="doacao.html">Doação</a></li>
 <li><a href="campanhas.html">Campanhas</a></li>
-<li><a href="denuncia.html">Denúncia</a></li>
+<li><a href="denuncias.html">Denúncia</a></li>
 <li><a href="contato.html">Contato</a></li>
 </ul>
 
@@ -280,6 +280,7 @@ Sair
 <input 
 type="text"
 placeholder="Nome completo"
+id="nomeCompleto"
 required>
 
 <input 
@@ -322,101 +323,63 @@ Já possui conta?
 
 <script>
 
-/* PERFIL */
+/* VERIFICA LOGIN */
 function verificarLogin(){
+    let logado = localStorage.getItem("logado");
 
-let logado = localStorage.getItem("logado");
+    if(logado === "true"){
+        document.getElementById("authButtons").style.display = "none";
+        document.getElementById("profileArea").style.display = "flex";
 
-if(logado === "true"){
-
-document.getElementById("authButtons").style.display = "none";
-
-document.getElementById("profileArea").style.display = "flex";
-
-let fotoSalva = localStorage.getItem("fotoPerfil");
-
-if(fotoSalva){
-
-document.getElementById("profileImage").src = fotoSalva;
-
-}
-
-}
-
+        let fotoSalva = localStorage.getItem("fotoPerfil");
+        if(fotoSalva){
+            document.getElementById("profileImage").src = fotoSalva;
+        }
+    }
 }
 
 verificarLogin();
 
 /* TROCAR FOTO */
-document
-.getElementById("profileUpload")
-.addEventListener("change", function(){
-
-let arquivo = this.files[0];
-
-if(arquivo){
-
-let leitor = new FileReader();
-
-leitor.onload = function(e){
-
-let imagem = e.target.result;
-
-document.getElementById("profileImage").src = imagem;
-
-localStorage.setItem("fotoPerfil", imagem);
-
-}
-
-leitor.readAsDataURL(arquivo);
-
-}
-
+document.getElementById("profileUpload").addEventListener("change", function(){
+    let arquivo = this.files[0];
+    if(arquivo){
+        let leitor = new FileReader();
+        leitor.onload = function(e){
+            let imagem = e.target.result;
+            document.getElementById("profileImage").src = imagem;
+            localStorage.setItem("fotoPerfil", imagem);
+        };
+        leitor.readAsDataURL(arquivo);
+    }
 });
 
 /* CADASTRO */
-document
-.getElementById("cadastroForm")
-.addEventListener("submit", function(event){
+document.getElementById("cadastroForm").addEventListener("submit", function(event){
+    event.preventDefault();
 
-event.preventDefault();
+    let nome = document.getElementById("nomeCompleto").value;
+    let email = document.getElementById("cadastroEmail").value;
+    let senha = document.getElementById("cadastroSenha").value;
+    let confirmar = document.getElementById("confirmarSenha").value;
 
-let email = document.getElementById("cadastroEmail").value;
+    if(senha !== confirmar){
+        alert("As senhas não coincidem!");
+        return;
+    }
 
-let senha = document.getElementById("cadastroSenha").value;
+    localStorage.setItem("nomeUsuario", nome);
+    localStorage.setItem("logado", "true");
 
-let confirmar = document.getElementById("confirmarSenha").value;
-
-if(senha !== confirmar){
-
-alert("As senhas não coincidem!");
-
-return;
-
-}
-
-/* SALVAR */
-localStorage.setItem("emailUsuario", email);
-
-localStorage.setItem("senhaUsuario", senha);
-
-localStorage.setItem("logado", "true");
-
-alert("Cadastro realizado com sucesso!");
-
-window.location.href = "inicio.html";
-
+    alert("Cadastro realizado com sucesso!");
+    window.location.href = "inicio.html";
 });
 
 /* LOGOUT */
 function logout(){
-
-localStorage.removeItem("logado");
-
-window.location.reload();
-
+    localStorage.removeItem("logado");
+    window.location.reload();
 }
-
 </script>
 
 </body>

@@ -79,6 +79,41 @@ header{
     background:#49a6ff;
 }
 
+/* PERFIL */
+.profile-area{
+    display:none;
+    align-items:center;
+    gap:12px;
+}
+
+.profile-img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+    cursor:pointer;
+}
+
+.profile-upload{
+    display:none;
+}
+
+.logout-btn{
+    background:#1380ff;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#49a6ff;
+}
+
 .main{
     width:100%;
     min-height:calc(100vh - 110px);
@@ -230,8 +265,9 @@ flex-wrap:wrap;
 gap:16px;
 }
 
-.auth-buttons{
-justify-content:center;
+.auth-buttons,
+.profile-area{
+    justify-content:center;
 }
 
 .titulo{
@@ -267,9 +303,32 @@ font-size:28px;
 <li><a href="contato.html">Contato</a></li>
 </ul>
 
-<div class="auth-buttons">
+<!-- BOTÕES LOGIN -->
+<div class="auth-buttons" id="authButtons">
 <a href="login.html">Login</a>
 <a href="cadastro.html">Cadastro</a>
+</div>
+
+<!-- PERFIL -->
+<div class="profile-area" id="profileArea">
+
+<label for="profileUpload">
+<img 
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+class="profile-img"
+id="profileImage">
+</label>
+
+<input 
+type="file" 
+id="profileUpload" 
+class="profile-upload"
+accept="image/*">
+
+<button class="logout-btn" onclick="logout()">
+Sair
+</button>
+
 </div>
 
 </nav>
@@ -336,14 +395,47 @@ Código PIX: 00020126360014BR.GOV.BCB.PIX123456789
 
 <script>
 function mostrarPagamento(tipo){
+    let caixas = document.querySelectorAll('.payment-box');
+    caixas.forEach(function(caixa){
+        caixa.style.display = "none";
+    });
+    document.getElementById(tipo).style.display = "block";
+}
 
-let caixas = document.querySelectorAll('.payment-box');
+/* VERIFICA LOGIN */
+function verificarLogin(){
+    let logado = localStorage.getItem("logado");
+    if(logado === "true"){
+        document.getElementById("authButtons").style.display = "none";
+        document.getElementById("profileArea").style.display = "flex";
 
-caixas.forEach(function(caixa){
-    caixa.style.display = "none";
+        let fotoSalva = localStorage.getItem("fotoPerfil");
+        if(fotoSalva){
+            document.getElementById("profileImage").src = fotoSalva;
+        }
+    }
+}
+
+verificarLogin();
+
+/* TROCAR FOTO */
+document.getElementById("profileUpload").addEventListener("change", function(){
+    let arquivo = this.files[0];
+    if(arquivo){
+        let leitor = new FileReader();
+        leitor.onload = function(e){
+            let imagem = e.target.result;
+            document.getElementById("profileImage").src = imagem;
+            localStorage.setItem("fotoPerfil", imagem);
+        };
+        leitor.readAsDataURL(arquivo);
+    }
 });
 
-document.getElementById(tipo).style.display = "block";
+/* LOGOUT */
+function logout(){
+    localStorage.removeItem("logado");
+    window.location.reload();
 }
 </script>
 

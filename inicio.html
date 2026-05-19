@@ -262,6 +262,10 @@ header{
                 Usuário
             </div>
 
+            <button onclick="logout()" style="background:#0b78ff; color:white; border:none; padding:8px 16px; border-radius:25px; cursor:pointer; margin-left:10px;">
+                Sair
+            </button>
+
         </div>
 
     </nav>
@@ -315,50 +319,42 @@ header{
 </section>
 
 <script>
-
 /* VERIFICA LOGIN */
-const usuarioLogado = localStorage.getItem("usuarioLogado");
-const nomeUsuario = localStorage.getItem("nomeUsuario");
-const fotoPerfil = localStorage.getItem("fotoPerfil");
+function verificarLogin() {
+    const logado = localStorage.getItem("logado");
+    const nome = localStorage.getItem("nomeUsuario") || "Usuário";
 
-if(usuarioLogado === "true"){
+    if(logado === "true"){
+        document.getElementById("authButtons").style.display = "none";
+        document.getElementById("profileArea").style.display = "flex";
+        document.getElementById("profileName").innerText = nome;
 
-    document.getElementById("authButtons").style.display = "none";
-
-    document.getElementById("profileArea").style.display = "flex";
-
-    if(nomeUsuario){
-        document.getElementById("profileName").innerText = nomeUsuario;
-    }
-
-    if(fotoPerfil){
-        document.getElementById("profilePic").src = fotoPerfil;
+        const foto = localStorage.getItem("fotoPerfil");
+        if(foto) document.getElementById("profilePic").src = foto;
     }
 }
 
+verificarLogin();
+
 /* TROCAR FOTO */
 document.getElementById("fileInput").addEventListener("change", function(event){
-
     const arquivo = event.target.files[0];
-
     if(arquivo){
-
         const leitor = new FileReader();
-
         leitor.onload = function(e){
-
             const imagem = e.target.result;
-
             document.getElementById("profilePic").src = imagem;
-
             localStorage.setItem("fotoPerfil", imagem);
         };
-
         leitor.readAsDataURL(arquivo);
     }
-
 });
 
+/* LOGOUT */
+function logout(){
+    localStorage.removeItem("logado");
+    window.location.reload();
+}
 </script>
 
 </body>

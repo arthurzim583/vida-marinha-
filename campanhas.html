@@ -81,6 +81,41 @@
             background: #49a6ff;
         }
 
+        /* PERFIL */
+        .profile-area{
+            display:none;
+            align-items:center;
+            gap:12px;
+        }
+
+        .profile-img{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            object-fit:cover;
+            border:3px solid #fff;
+            cursor:pointer;
+        }
+
+        .profile-upload{
+            display:none;
+        }
+
+        .logout-btn{
+            background:#1380ff;
+            color:#fff;
+            border:none;
+            padding:10px 18px;
+            border-radius:30px;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .logout-btn:hover{
+            background:#49a6ff;
+        }
+
         /* CONTEÚDO PRINCIPAL */
         .main {
             padding: 40px 20px;
@@ -165,7 +200,8 @@
                 gap: 15px;
             }
 
-            .auth-buttons {
+            .auth-buttons,
+            .profile-area {
                 justify-content: center;
             }
 
@@ -191,9 +227,32 @@
                 <li><a href="contato.html">Contato</a></li>
             </ul>
 
-            <div class="auth-buttons">
+            <!-- BOTÕES LOGIN -->
+            <div class="auth-buttons" id="authButtons">
                 <a href="login.html">Login</a>
                 <a href="cadastro.html">Cadastro</a>
+            </div>
+
+            <!-- PERFIL -->
+            <div class="profile-area" id="profileArea">
+
+                <label for="profileUpload">
+                    <img 
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    class="profile-img"
+                    id="profileImage">
+                </label>
+
+                <input 
+                type="file" 
+                id="profileUpload" 
+                class="profile-upload"
+                accept="image/*">
+
+                <button class="logout-btn" onclick="logout()">
+                    Sair
+                </button>
+
             </div>
         </nav>
     </header>
@@ -225,7 +284,7 @@
 
             <!-- CAMPANHA 3 -->
             <div class="card">
-                <img src="https://i.ibb.co/DHbrZnC3/q-u-i-0-G01-UI1-MQhg-unsplash-2-scaled-jpg.webp" alt="q-u-i-0-G01-UI1-MQhg-unsplash-2-scaled-jpg" alt="Salve os Corais">
+                <img src="https://i.ibb.co/DHbrZnC3/q-u-i-0-G01-UI1-MQhg-unsplash-2-scaled-jpg.webp" alt="Salve os Corais">
                 <div class="card-content">
                     <h2>Salve os Corais</h2>
                     <p>Os recifes estão em risco. Ajude a preservar um dos ecossistemas mais importantes do planeta.</p>
@@ -245,6 +304,44 @@
 
         </div>
     </section>
+
+<script>
+/* VERIFICA LOGIN */
+function verificarLogin(){
+    let logado = localStorage.getItem("logado");
+    if(logado === "true"){
+        document.getElementById("authButtons").style.display = "none";
+        document.getElementById("profileArea").style.display = "flex";
+
+        let fotoSalva = localStorage.getItem("fotoPerfil");
+        if(fotoSalva){
+            document.getElementById("profileImage").src = fotoSalva;
+        }
+    }
+}
+
+verificarLogin();
+
+/* TROCAR FOTO */
+document.getElementById("profileUpload").addEventListener("change", function(){
+    let arquivo = this.files[0];
+    if(arquivo){
+        let leitor = new FileReader();
+        leitor.onload = function(e){
+            let imagem = e.target.result;
+            document.getElementById("profileImage").src = imagem;
+            localStorage.setItem("fotoPerfil", imagem);
+        };
+        leitor.readAsDataURL(arquivo);
+    }
+});
+
+/* LOGOUT */
+function logout(){
+    localStorage.removeItem("logado");
+    window.location.reload();
+}
+</script>
 
 </body>
 </html>
